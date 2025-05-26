@@ -25,3 +25,9 @@ precrop_frac = 0.5
 half_res = True
 do_half_precision = False
 
+chunk = 2048
+netchunk = 4096
+render_factor = 10
+render_only
+render_test
+half_res

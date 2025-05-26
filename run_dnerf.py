@@ -1,7 +1,7 @@
 import os
 import imageio
 import time
-from torch.utils.tensorboard import SummaryWriter
+# from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm, trange
 
 
@@ -263,7 +263,7 @@ def create_nerf(args):
     if len(ckpts) > 0 and not args.no_reload:
         ckpt_path = ckpts[-1]
         print('Reloading from', ckpt_path)
-        ckpt = torch.load(ckpt_path)
+        ckpt = torch.load(ckpt_path, map_location=torch.device('cpu'))
 
         start = ckpt['global_step']
         optimizer.load_state_dict(ckpt['optimizer_state_dict'])
@@ -952,6 +952,10 @@ def train():
 
 
 if __name__=='__main__':
-    torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device.type == "cuda":
+        torch.set_default_tensor_type('torch.cuda.FloatTensor')
+    else:
+        torch.set_default_tensor_type('torch.FloatTensor')
 
     train()

@@ -98,7 +98,7 @@ def load_blender_data(basedir, half_res=False, testskip=1):
 
         assert times[0] == 0, "Time must start at 0"
 
-        imgs = (np.array(imgs) / 255.).astype(np.float32)  # keep all 4 channels (RGBA)
+        imgs = np.array(imgs, dtype=np.float16) / 255.  # keep all 4 channels (RGBA)
         poses = np.array(poses).astype(np.float32)
         times = np.array(times).astype(np.float32)
         counts.append(counts[-1] + imgs.shape[0])
@@ -134,7 +134,7 @@ def load_blender_data(basedir, half_res=False, testskip=1):
 
         imgs_half_res = np.zeros((imgs.shape[0], H, W, 4))
         for i, img in enumerate(imgs):
-            imgs_half_res[i] = cv2.resize(img, (H, W), interpolation=cv2.INTER_AREA)
+            imgs_half_res[i] = cv2.resize(img.astype(np.float32), (H, W), interpolation=cv2.INTER_AREA)
         imgs = imgs_half_res
         # imgs = tf.image.resize_area(imgs, [400, 400]).numpy()
 
