@@ -1,4 +1,4 @@
-<img src='https://www.albertpumarola.com/images/2021/D-NeRF/teaser2.gif' align="right" width=400>
+
 
 # D-NeRF: Neural Radiance Fields for Dynamic Scenes
 ### [[Project]](https://www.albertpumarola.com/research/D-NeRF/index.html)[ [Paper]](https://openaccess.thecvf.com/content/CVPR2021/papers/Pumarola_D-NeRF_Neural_Radiance_Fields_for_Dynamic_Scenes_CVPR_2021_paper.pdf) 
